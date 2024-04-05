@@ -1,6 +1,6 @@
 package monster;
 
-import entity.entity_lvl2.Aggressive_Entity;
+import entity.entity_lvl3.Aggressive_Entity;
 import enums.E_MagicalNumber;
 import enums.E_RGB_COLOR;
 import main.GamePanel;
@@ -13,8 +13,8 @@ public abstract class Monster extends Aggressive_Entity {
     }
 
 
-    public void drawExtra(Graphics2D g2, int screenX, int screenY) {
-        super.drawExtra(g2, screenX, screenY);
+    public void draw(Graphics2D g2) {
+        super.draw(g2);
 
         // region MONSTER HP BAR
         if (hpBarOn) {
@@ -23,11 +23,11 @@ public abstract class Monster extends Aggressive_Entity {
             double hpBarValue = oneScale*life;
 
             g2.setColor(E_RGB_COLOR.GRAY_OF_MONSTER_HP_BARRE.getColor());
-            g2.fillRect(screenX-1, screenY-16, gp.tileSize+2, 12);
+            g2.fillRect(getScreenCord("X")-1, getScreenCord("Y")-16, gp.tileSize+2, 12);
 
             //Vie restante
             g2.setColor(E_RGB_COLOR.RED_OF_MONSTER_HP_BARRE.getColor());
-            g2.fillRect(screenX, screenY - 15, (int)hpBarValue, 10);
+            g2.fillRect(getScreenCord("X"), getScreenCord("Y") - 15, (int)hpBarValue, 10);
 
             hpBarCounter ++;
 
@@ -36,7 +36,10 @@ public abstract class Monster extends Aggressive_Entity {
                 hpBarOn = false;
             }
         }
+        drawSprite(g2);
         // endregion
     }
-
+    public void drawSprite(Graphics2D g2) {
+        g2.drawImage(image, getScreenCord("X"), getScreenCord("Y"), null);
+    }
 }

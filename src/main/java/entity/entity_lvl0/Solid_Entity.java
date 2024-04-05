@@ -3,7 +3,9 @@ package entity.entity_lvl0;
 import annotation.IA;
 import entity.Entity;
 import enums.E_ActualSprite;
+import enums.E_Direction;
 import main.GamePanel;
+import main.Particle_Constructor;
 
 import java.awt.*;
 
@@ -17,10 +19,8 @@ public abstract class Solid_Entity extends Entity {
 
     public Solid_Entity(GamePanel gp) {
         super(gp);
-    }
-
-
-    public void drawExtra(Graphics2D g2, int screenX, int screenY) {
-        super.drawExtra(g2, screenX, screenY);}
+        if (!(this instanceof Particle_Constructor)) {
+            image = entitySprites[0];}
+        }
 }
 

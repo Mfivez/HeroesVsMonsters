@@ -1,7 +1,7 @@
 package tiles_interactive;
 
 import entity.Entity;
-import entity.entity_lvl1.Alive_Entity;
+import entity.entity_lvl2.Alive_Entity;
 import main.GamePanel;
 
 import java.awt.*;

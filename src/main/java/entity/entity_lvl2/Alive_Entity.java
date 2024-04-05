@@ -1,25 +1,27 @@
-package entity.entity_lvl1;
+package entity.entity_lvl2;
 
 
 import annotation.IA;
 import annotation.Items;
 import entity.Entity;
 import entity.entity_lvl0.Solid_Entity;
-import entity.entity_lvl2.Aggressive_Entity;
-import entity.entity_lvl2.Passive_Entity;
+import entity.entity_lvl1.Mobile_Entity;
+import entity.entity_lvl3.Aggressive_Entity;
+import entity.entity_lvl3.Passive_Entity;
 import enums.*;
 import main.GamePanel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 // Peut-être séparer les classes Alive_entity pour celles qui peuvent bouger et celles qui ne peuvent pas
-public abstract class Alive_Entity extends Solid_Entity {
+public abstract class Alive_Entity extends Mobile_Entity {
     public E_species specie; // Espèces
     public E_Main_Class mainClass; // Classes principales
 
     public BufferedImage up1, up2, down2, left1, left2, right1, right2; // Mouvement
-    public int speed; // Mouvement
+
 
     public boolean invincible = false;
     public int maxLife;
@@ -94,16 +96,6 @@ public abstract class Alive_Entity extends Solid_Entity {
     @Items
     public void checkDrop() {}
 
-    public void drawExtra(Graphics2D g2, int screenX, int screenY) {
-        super.drawExtra(g2, screenX, screenY);
-
-        if (invincible) {
-            ((Aggressive_Entity)this).hpBarOn = true;
-            ((Aggressive_Entity)this).hpBarCounter = E_MagicalNumber.RESET_COUNTER.Value();
-            changeAlpha(g2, 0.4f);
-
-        }
-    }
 
     /** ---- setAction() ---- <p>
      * Cette fonction offre aux classes enfant d'entité l'accès à cette méthode permettant de définir le comportement de l'entité
@@ -116,12 +108,30 @@ public abstract class Alive_Entity extends Solid_Entity {
 
     }
     @IA
-    public void setAction() {};
+    public void setAction() {
 
-    @Override
-    public void drawExtraDirection(Graphics2D g2, int tempScreenX, int tempScreenY) {
-        super.drawExtraDirection(g2, tempScreenX, tempScreenY);
+        actionLockCounter ++;
+
+        if (actionLockCounter == 120) {
+            Random random = new Random();
+            int i = random.nextInt(100)+1;
+
+            if (i<= 25) {
+                direction = E_Direction.UP;
+            }
+            if (i > 25 && i<= 50) {
+                direction = E_Direction.DOWN;
+            }
+            if (i > 50 && i<= 75) {
+                direction = E_Direction.LEFT;
+            }
+            if (i > 75) {
+                direction = E_Direction.RIGHT;
+            }
+            actionLockCounter = 0;
+        }
     }
+
 }
 
 

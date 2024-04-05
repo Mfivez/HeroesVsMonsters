@@ -3,13 +3,14 @@ import annotation.*;
 import entity.entity_interface.I_Entity_Drawer;
 import entity.entity_interface.I_Entity_updater;
 import entity.entity_lvl0.Solid_Entity;
-import entity.entity_lvl1.Alive_Entity;
-import entity.entity_lvl2.Aggressive_Entity;
+import entity.entity_lvl1.Mobile_Entity;
+import entity.entity_lvl2.Alive_Entity;
+import entity.entity_lvl3.Aggressive_Entity;
 import entity.entity_tool.eTool_SpriteSetter;
 import enums.*;
 import main.GamePanel;
-import object.Objects;
 import main.Particle_Constructor;
+import object.Objects;
 import projectile.Projectile;
 
 import java.awt.*;
@@ -232,6 +233,12 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
 
     public void update() {
 
+        int screenX = worldX - gp.player.worldX + gp.player.getScreenX();
+        int screenY = worldY - gp.player.worldY + gp.player.getScreenY();
+
+        int tempScreenX = screenX;
+        int tempScreenY = screenY;
+
         // region COLLISION
         ((Solid_Entity)this).collisionOn = false;
         gp.cChecker.checkAll(this);
@@ -239,7 +246,7 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
         // endregion
 
         // region DAMAGE MONSTER TO PLAYER
-        if(this.type == E_EntityType.MONSTER && contactPlayer) { ((Aggressive_Entity)this).damagePlayer(((Aggressive_Entity)this).attack);}
+        if( (this instanceof Aggressive_Entity) && contactPlayer) { ((Aggressive_Entity)this).damagePlayer(((Aggressive_Entity)this).attack);}
         // endregion
 
         //region MOVE
@@ -294,154 +301,39 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
      */
 
     public void draw(Graphics2D g2) {
-        //region Caméra
-        int screenX = worldX - gp.player.worldX + gp.player.getScreenX();
-        int screenY = worldY - gp.player.worldY + gp.player.getScreenY();
-
-        int tempScreenX = screenX;
-        int tempScreenY = screenY;
-        //endregion
-
-        int i =(((Solid_Entity)this).spriteNum == E_ActualSprite.SPRITE1 ) ? 0:1;
-        int j = 0; // SPRITE INDEX RENAME AFTER TEST IF CONCLUANTE
-        /***
-        switch (direction) {
-            case DOWN -> image = down1;
-        }
-         */
-        // region ATTACK & MOVE
-        switch (direction) {
-
-            case UP -> {
-                if (this instanceof Alive_Entity && !(this instanceof Aggressive_Entity)) {
-                            image = ((Alive_Entity) this).entitySprites[j+i];
-                    }
-
-                else if (this instanceof Aggressive_Entity) {
-                    if (!((Aggressive_Entity)this).attacking) {
-                            image = ((Alive_Entity) this).entitySprites[j+i];
-                    }
-                    if (((Aggressive_Entity)this).attacking) {
-                        tempScreenY = screenY - gp.tileSize;
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE1) {
-                            image = ((Aggressive_Entity)this).upAttack1;
-                        }
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE2) {
-                            image = ((Aggressive_Entity)this).upAttack2;
-                        }
-                    }
-                }
-
-                }
-            case DOWN -> {
-
-                if (this instanceof Alive_Entity && !(this instanceof Aggressive_Entity)) {
-                        if (((Solid_Entity) this).spriteNum == E_ActualSprite.SPRITE1) {
-                            image = down1;
-                        }
-                        if (((Solid_Entity) this).spriteNum == E_ActualSprite.SPRITE2) {
-                            image = ((Alive_Entity) this).down2;
-                        }
-
-
-                } else if (this instanceof Aggressive_Entity) {
-                    if (!((Aggressive_Entity)this).attacking) {
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE1) {
-                            image = down1;
-                        }
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE2) {
-                            image = ((Aggressive_Entity)this).down2;
-                        }
-                    }
-                    if (((Aggressive_Entity)this).attacking) {
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE1) {
-                            image = ((Aggressive_Entity)this).downAttack1;
-                        }
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE2) {
-                            image = ((Aggressive_Entity)this).downAttack2;
-                        }
-                    }
-                }
-                else {
-                    if (((Objects)this).spriteNum == E_ActualSprite.SPRITE1) {
-                        image = down1;
-                    }
-                    if (((Objects)this).spriteNum == E_ActualSprite.SPRITE2) {
-                        image = down1;
-                    }
-                }
-            }
-            case LEFT -> {
-
-                if (this instanceof Alive_Entity && !(this instanceof Aggressive_Entity)) {
-                        if (((Alive_Entity)this).spriteNum == E_ActualSprite.SPRITE1) {
-                            image = ((Alive_Entity)this).left1;
-                        }
-                        if (((Alive_Entity)this).spriteNum == E_ActualSprite.SPRITE2) {
-                            image = ((Alive_Entity)this).left2;
-                        }
-
-
-                    } else if (this instanceof Aggressive_Entity) {
-                    if (!((Aggressive_Entity)this).attacking) {
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE1) {
-                            image = ((Aggressive_Entity)this).left1;
-                        }
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE2) {
-                            image = ((Aggressive_Entity)this).left2;
-                        }
-                    }
-                    if (((Aggressive_Entity)this).attacking) {
-                        tempScreenX = screenX - gp.tileSize;
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE1) {
-                            image = ((Aggressive_Entity)this).leftAttack1;
-                        }
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE2) {
-                            image = ((Aggressive_Entity)this).leftAttack2;
-                        }
-                    }
-                }
-            }
-
-            case RIGHT -> {
-
-                if (this instanceof Alive_Entity && !(this instanceof Aggressive_Entity)) {
-                        if (((Alive_Entity)this).spriteNum == E_ActualSprite.SPRITE1) {
-                            image = ((Alive_Entity)this).right1;
-                        }
-                        if (((Alive_Entity)this).spriteNum == E_ActualSprite.SPRITE2) {
-                            image = ((Alive_Entity)this).right2;
-                        }
-
-
-                    } else if (this instanceof Aggressive_Entity) {
-                    if (!((Aggressive_Entity)this).attacking) {
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE1) {
-                            image = ((Aggressive_Entity)this).right1;
-                        }
-                        if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE2) {
-                            image = ((Aggressive_Entity)this).right2;
-                        }
-                    }
-                        if (((Aggressive_Entity)this).attacking) {
-                            if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE1) {
-                                image = ((Aggressive_Entity)this).rightAttack1;
-                            }
-                            if (((Aggressive_Entity)this).spriteNum == E_ActualSprite.SPRITE2) {
-                                image = ((Aggressive_Entity)this).rightAttack2;
-                        }
-                    }
-                }
+        int screenX = getScreenCord("X"); int tempScreenX = screenX;
+        int screenY = getScreenCord("Y"); int tempScreenY = screenY;
+        boolean changePos = false;
+        if (this instanceof Mobile_Entity) {
+            switch(direction){
+                case DOWN-> {changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 0, E_Direction.DOWN);}
+                case UP-> {changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 2, E_Direction.UP);}
+                case LEFT-> {changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 4, E_Direction.LEFT);}
+                case RIGHT-> {changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 6, E_Direction.RIGHT);}
             }
         }
-        // endregion
 
-        drawExtra(g2, screenX, screenY);
 
-        g2.drawImage(image, tempScreenX, tempScreenY, null);
-        //RESET ALPHA FOR DYING
-        changeAlpha(g2, 1f);
-    }
+         if (this instanceof Aggressive_Entity) {
+             if (((Aggressive_Entity)this).invincible) {
+                 ((Aggressive_Entity)this).hpBarOn = true;
+                 ((Aggressive_Entity)this).hpBarCounter = E_MagicalNumber.RESET_COUNTER.Value();
+                 changeAlpha(g2, 0.4f);}
+
+             if (((Aggressive_Entity)this).dying) {((Aggressive_Entity)this).dyingAnimation(g2);}
+         }
+        if (changePos && direction == E_Direction.UP) {tempScreenY -= gp.tileSize;}
+        if (changePos && direction == E_Direction.LEFT) {tempScreenX -= gp.tileSize;}
+
+         g2.drawImage(image, tempScreenX, tempScreenY, null);
+
+                  //RESET ALPHA FOR DYING
+         changeAlpha(g2,1f);
+         }
+         
+    public int getScreenCord(String XorY) {
+        return (XorY.equals("X")) ?  (worldX - gp.player.worldX + gp.player.getScreenX()) : (worldY - gp.player.worldY + gp.player.getScreenY());}
+
 
     /** ---- changeAlpha() <p>
      * Méthode pour modifier l'opacité de l'entité.
@@ -453,8 +345,8 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
     }
 
-    public void drawExtra(Graphics2D g2, int screenX, int screenY) {}
 
-    public void drawExtraDirection(Graphics2D g2, int tempScreenX, int tempScreenY) {}
+
+
 
 }

@@ -1,10 +1,9 @@
-package entity.entity_lvl2;
+package entity.entity_lvl3;
 
-import annotation.IA;
+import Player.Player;
 import entity.Entity;
-import entity.entity_lvl1.Alive_Entity;
-import enums.E_ActualSprite;
-import enums.E_EntityType;
+import entity.entity_lvl2.Alive_Entity;
+import enums.E_Direction;
 import enums.E_MagicalNumber;
 import enums.E_Sound;
 import main.GamePanel;
@@ -38,26 +37,9 @@ public abstract class Aggressive_Entity extends Alive_Entity {
     public int exp;
     public Aggressive_Entity(GamePanel gp) {
         super(gp);
-        getAttackSprite(8);
     }
 
 
-    /**
-     * Charge les images des sprites du joueur à partir des fichiers d'images.
-     * Cette méthode lit les fichiers d'images et les redimensionne selon la taille des tuiles du jeu.
-     */
-    public void getAttackSprite(int i) {
-        if (entitySprites.length > 8) {
-            upAttack1 = entitySprites[i];i++;
-            upAttack2 = entitySprites[i];i++;
-            downAttack1 = entitySprites[i];i++;
-            downAttack2 = entitySprites[i];i++;
-            leftAttack1 = entitySprites[i];i++;
-            leftAttack2 = entitySprites[i];i++;
-            rightAttack1 = entitySprites[i];i++;
-            rightAttack2 = entitySprites[i];
-        }
-    }
 
     /** ---- dyingAnimation() ---- <p>
      * Anime l'entité lors de sa mort en faisant clignoter son opacité.
@@ -102,37 +84,16 @@ public abstract class Aggressive_Entity extends Alive_Entity {
 
     }
 
+    public boolean getAttackSprite(int spriteNumber, E_Direction direction) {
+        boolean needChange = false;
+        int coefPlayerWeapon = 1;
+        if (this instanceof Player) { coefPlayerWeapon = ((Player)this).getPlayerAttackSprite();}
 
-    public void drawExtra(Graphics2D g2, int screenX, int screenY) {
-        super.drawExtra(g2, screenX, screenY);
+        if (!attacking){image= entitySprites[spriteNumber+getActualSprite()];}
 
-        if (dying) {dyingAnimation(g2);}
-    }
+        if(attacking){image= ((Aggressive_Entity)this).entitySprites[(spriteNumber+(8*coefPlayerWeapon))+getActualSprite()]; needChange = true;}
 
-
-    public void drawExtraDirection(Graphics2D g2, int tempScreenX, int tempScreenY) {
-        super.drawExtraDirection(g2, tempScreenX, tempScreenY);
-
-        int i =(spriteNum == E_ActualSprite.SPRITE1) ? 0:1; // int pour récupérer le sprite actuel
-
-        switch (direction) {
-            case UP -> {getLogiqueOfSpriteForDirection(0, i);tempScreenY -= gp.tileSize;}
-            case DOWN -> {getLogiqueOfSpriteForDirection(2, i);}
-            case LEFT -> {getLogiqueOfSpriteForDirection(4, i);}
-            case RIGHT -> {getLogiqueOfSpriteForDirection(6, i);tempScreenY -= gp.tileSize;}
-        }
-    }
-
-
-    /** ---- getLogiqueOfDirection
-     *  Retourne la logique de récupération de sprites associées à la fonction draw extra direction.
-     *  Si l'entité attaque -> donne ce sprite sinon -> celui-là.
-     * @param spriteIndex l'index dans la liste des sprites associées à l'entité (EntitySprites)
-     * @param actualSprite le sprite de direction actuel appliqué (1 ou 2)
-     */
-    public void getLogiqueOfSpriteForDirection(int spriteIndex, int actualSprite) {
-        if (!attacking) {image = entitySprites[spriteIndex+actualSprite];} spriteIndex += 8;
-        if (attacking) {image = entitySprites[spriteIndex+actualSprite];}
+        return needChange && (direction == E_Direction.UP || direction == E_Direction.LEFT);
     }
 }
 

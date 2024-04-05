@@ -2,7 +2,7 @@ package projectile;
 
 
 import entity.Entity;
-import entity.entity_lvl2.Aggressive_Entity;
+import entity.entity_lvl3.Aggressive_Entity;
 import main.GamePanel;
 import enums.E_RGB_COLOR;
 

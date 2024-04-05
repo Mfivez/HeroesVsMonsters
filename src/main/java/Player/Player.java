@@ -2,8 +2,8 @@ package Player;
 
 import entity.Entity;
 import entity.entity_lvl0.Solid_Entity;
-import entity.entity_lvl1.Alive_Entity;
-import entity.entity_lvl2.Aggressive_Entity;
+import entity.entity_lvl2.Alive_Entity;
+import entity.entity_lvl3.Aggressive_Entity;
 import enums.*;
 import main.GamePanel;
 import main.KeyHandler;
@@ -103,14 +103,8 @@ public class Player extends Aggressive_Entity {
         defense = getDefense();
     }
 
-    public void getPlayerAttackSprite() {
-        if (entitySprites.length > 8) { int i = 0;
-
-            if (currentWeapon.type == E_EntityType.SWORD) {i = 8;}
-            else if (currentWeapon.type == E_EntityType.AXE) {i = 16;}
-
-            getAttackSprite(i);
-        }
+    public int getPlayerAttackSprite() {
+        return (currentWeapon.type == E_EntityType.SWORD) ? 1 : 2;
     }
 
 
@@ -171,6 +165,7 @@ public class Player extends Aggressive_Entity {
         if (attacking) {attacking();}
 
         else if (keyH.upPressed || keyH.downPressed || keyH.rightPressed || keyH.leftPressed || keyH.enterPressed){
+
             if (keyH.upPressed) {
                 direction = E_Direction.UP;
             }
@@ -189,7 +184,6 @@ public class Player extends Aggressive_Entity {
                 gp.aSetter.setMonster();
                 spawnMobCounter = E_MagicalNumber.RESET_COUNTER.Value();
             }
-
 
 
             //CHECK TILE COLLISION
@@ -488,7 +482,7 @@ public class Player extends Aggressive_Entity {
 
                 currentWeapon = selectedItem;
                 attack = getAttack();
-                getPlayerAttackSprite();
+
             }
             if (selectedItem.type == E_EntityType.SHIELD) {
 
@@ -503,28 +497,6 @@ public class Player extends Aggressive_Entity {
 
     }
 
-
-
-
-    /**
-     * Dessine le joueur à l'écran en fonction de sa position et de son état actuel.
-     * Cette méthode dessine le sprite correspondant à :
-     *                          la direction
-     *                                  &&
-     *                          l'état du joueur.
-     *
-     * @param g2 Le contexte graphique dans lequel dessiner le joueur.
-     */
-    @Override
-    public void draw(Graphics2D g2) {
-        super.draw(g2);
-
-        // region DEBUG
-        //g2.setFont(new Font("Arial", Font.PLAIN, 26));
-        //g2.setColor(Color.WHITE);
-        //g2.drawString("Invicible: " + invicibleCounter, 10, 400);
-        // endregion
-    }
 
     /** --- Getters & Setters --- **/
     public int getScreenX() {return screenX;}

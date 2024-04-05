@@ -30,30 +30,6 @@ public class Npc_OldMan extends Npc {
         dialogues[3] = "Ya, ik spreek nerderlands, \n ik ben peekes !";
     }
 
-    public void setAction() {
-
-        actionLockCounter ++;
-
-        if (actionLockCounter == 120) {
-            Random random = new Random();
-            int i = random.nextInt(100)+1;
-
-            if (i<= 25) {
-                direction = E_Direction.UP;
-            }
-            if (i > 25 && i<= 50) {
-                direction = E_Direction.DOWN;
-            }
-            if (i > 50 && i<= 75) {
-                direction = E_Direction.LEFT;
-            }
-            if (i > 75) {
-                direction = E_Direction.RIGHT;
-            }
-            actionLockCounter = 0;
-        }
-    }
-
     public void speak() {
 
         // Le code fonctionne très bien sans cette méthode pour le moment

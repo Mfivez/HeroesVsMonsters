@@ -16,10 +16,4 @@ public interface I_Entity_Drawer {
      */
     void draw(Graphics2D g2);
 
-
-    void drawExtra(Graphics2D g2, int screenX, int screenY);
-
-    void drawExtraDirection(Graphics2D g2, int tempScreenX, int tempScreenY);
-
-
 }

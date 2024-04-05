@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -53,7 +54,7 @@ public class eTool_SpriteSetter {
         //}
 
         // NOMINATION VARIABLES
-        String[] directions = {"_up", "_down", "_left", "_right"};
+        String[] directions = {"_down", "_up",  "_left", "_right"};
         String[] states = {"_1", "_2"};
         String[] uses = {"", "_attack", "_axe"};
         boolean canUse = false;
@@ -65,14 +66,14 @@ public class eTool_SpriteSetter {
 
         // region 1 SPRITE
         if (fileNames.size() == 1) {
-            allSpriteDirection.add(className + directions[1] + states[0]);
+            allSpriteDirection.add(className + directions[0] + states[0]);
         }
         // endregion
 
         // region 2 SPRITES
         else if (fileNames.size() == 2) {
             for (int i = 0; i < 2; i++) {
-                allSpriteDirection.add(className + directions[1] + states[i]);
+                allSpriteDirection.add(className + directions[0] + states[i]);
             }
         }
         // endregion
@@ -121,6 +122,7 @@ public class eTool_SpriteSetter {
 
         for (int i = 0; i < spriteDirection.size(); i++) {
             try {
+                System.out.println(spriteDirection.get(i));
                 BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/" + folder + "/" + spriteDirection.get(i) + ".png")));
                 if (canUse && (spriteDirection.get(i).contains("attack") || spriteDirection.get(i).contains("axe")) ) {
                     if (spriteDirection.get(i).contains("left") ||spriteDirection.get(i).contains("right")) {
