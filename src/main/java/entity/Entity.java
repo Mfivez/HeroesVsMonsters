@@ -10,7 +10,6 @@ import entity.entity_tool.eTool_SpriteSetter;
 import enums.*;
 import main.GamePanel;
 import main.Particle_Constructor;
-import object.Objects;
 import projectile.Projectile;
 
 import java.awt.*;
@@ -87,7 +86,7 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
             if (this instanceof Projectile) {
                 ((Projectile)this).up1 = image[i];
                 ((Projectile)this).up2 = image[i];
-                ((Projectile)this).down1 = image[i];
+                this.down1 = image[i];
                 ((Projectile)this).down2 = image[i];
                 ((Projectile)this).left1 = image[i];
                 ((Projectile)this).left2 = image[i];
@@ -121,7 +120,7 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
             int i = 0;
             ((Alive_Entity)this).up1 = image[i];i++;
             ((Alive_Entity)this).up2 = image[i];i++;
-            ((Alive_Entity)this).down1 = image[i];i++;
+            this.down1 = image[i];i++;
             ((Alive_Entity)this).down2 = image[i];i++;
             ((Alive_Entity)this).left1 = image[i];i++;
             ((Alive_Entity)this).left2 = image[i];i++;
@@ -135,7 +134,7 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
             int i = 0;
             ((Alive_Entity)this).up1 = image[i];i++;
             ((Alive_Entity)this).up2 = image[i];i++;
-            ((Alive_Entity)this).down1 = image[i];i++;
+            this.down1 = image[i];i++;
             ((Alive_Entity)this).down2 = image[i];i++;
             ((Alive_Entity)this).left1 = image[i];i++;
             ((Alive_Entity)this).left2 = image[i];i++;
@@ -236,7 +235,6 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
         int screenX = worldX - gp.player.worldX + gp.player.getScreenX();
         int screenY = worldY - gp.player.worldY + gp.player.getScreenY();
 
-        int tempScreenX = screenX;
         int tempScreenY = screenY;
 
         // region COLLISION
@@ -281,8 +279,8 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
                 ((Alive_Entity)this).invincibleCounter = E_MagicalNumber.RESET_COUNTER.Value();
             }
 
-            if (((Aggressive_Entity)this).shotAvailableCounter < E_MagicalNumber.SHOT_AVAILABLE_DURATION.Value()) {
-                ((Aggressive_Entity)this).shotAvailableCounter++;
+            if (this instanceof Aggressive_Entity && ((Aggressive_Entity) this).shotAvailableCounter < E_MagicalNumber.SHOT_AVAILABLE_DURATION.Value()) {
+                ((Aggressive_Entity) this).shotAvailableCounter++;
             }
         }
         // endregion
@@ -306,10 +304,10 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
         boolean changePos = false;
         if (this instanceof Mobile_Entity) {
             switch(direction){
-                case DOWN-> {changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 0, E_Direction.DOWN);}
-                case UP-> {changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 2, E_Direction.UP);}
-                case LEFT-> {changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 4, E_Direction.LEFT);}
-                case RIGHT-> {changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 6, E_Direction.RIGHT);}
+                case DOWN-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 0, E_Direction.DOWN);
+                case UP-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 2, E_Direction.UP);
+                case LEFT-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 4, E_Direction.LEFT);
+                case RIGHT-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 6, E_Direction.RIGHT);
             }
         }
 
@@ -330,7 +328,7 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
                   //RESET ALPHA FOR DYING
          changeAlpha(g2,1f);
          }
-         
+
     public int getScreenCord(String XorY) {
         return (XorY.equals("X")) ?  (worldX - gp.player.worldX + gp.player.getScreenX()) : (worldY - gp.player.worldY + gp.player.getScreenY());}
 

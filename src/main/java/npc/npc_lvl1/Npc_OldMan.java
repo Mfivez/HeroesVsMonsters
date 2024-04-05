@@ -1,12 +1,10 @@
 package npc.npc_lvl1;
 
 
-import entity.Entity;
 import main.GamePanel;
 import enums.E_Direction;
 import npc.Npc;
 
-import java.util.Random;
 
 public class Npc_OldMan extends Npc {
 

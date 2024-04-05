@@ -1,9 +1,7 @@
 package entity.entity_lvl0;
 
-import annotation.IA;
 import entity.Entity;
 import enums.E_ActualSprite;
-import enums.E_Direction;
 import main.GamePanel;
 import main.Particle_Constructor;
 

@@ -4,14 +4,12 @@ package entity.entity_lvl2;
 import annotation.IA;
 import annotation.Items;
 import entity.Entity;
-import entity.entity_lvl0.Solid_Entity;
 import entity.entity_lvl1.Mobile_Entity;
-import entity.entity_lvl3.Aggressive_Entity;
 import entity.entity_lvl3.Passive_Entity;
 import enums.*;
 import main.GamePanel;
 
-import java.awt.*;
+
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
