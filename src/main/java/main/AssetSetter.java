@@ -25,7 +25,7 @@ public class AssetSetter {
         this.gp = gp;
     }
 
-    /***------------------------------------------------* setAllThings() *----------------------------------------------------*
+    /** ---- setAllThings() ----<p>
      *Cette fonction set tous les types d'entitées settables depuis cette class
      * @Entity Object
      * @Entity Npc
@@ -39,7 +39,7 @@ public class AssetSetter {
         setInteractiveTile();
     }
 
-    /***--------------------------------------------------* setObject() *----------------------------------------------------*
+    /** ---- setObject() ----<p>
      *Cette fonction utilise {@link uTool_AssetSetter} pour disposer sur le terrain les entités de catégorie OBJECT
      */
     public void setObject() {
@@ -48,7 +48,7 @@ public class AssetSetter {
         );
     }
 
-    /** *--------------------------------------------------* setNPC() *----------------------------------------------------*
+    /** ---- setNPC() ----<p>
      *Cette fonction utilise {@link uTool_AssetSetter} pour disposer sur le terrain les entités de catégorie NPC
      */
     public void setNPC() {
@@ -57,7 +57,7 @@ public class AssetSetter {
         );
     }
 
-    /** *------------------------------------------------* setMonsters() *----------------------------------------------------*
+    /**  ---- setMonsters() ---- <p>
      *Cette fonction utilise {@link uTool_AssetSetter} pour disposer sur le terrain les entités de catégorie MONSTER
      */
     public void setMonster() {
@@ -95,7 +95,7 @@ public class AssetSetter {
         }
     }
 
-    /***----------------------------------------------* setInteractiveTile() *---------------------------------------------------*
+    /** ---- setInteractiveTile() ----
      *Cette fonction utilise {@link uTool_AssetSetter} pour disposer sur le terrain les entités de catégorie iTILES
      */
     public void setInteractiveTile() {

@@ -2,6 +2,7 @@ package main;
 
 import Player.Player;
 import Tiles.TilesManager;
+import ui.UI;
 import entity.Entity;
 import entity.entity_lvl2.Alive_Entity;
 import entity.entity_lvl3.Aggressive_Entity;
@@ -11,6 +12,7 @@ import enums.E_Sound;
 import enums.E_TimeUnit;
 import tiles_interactive.InteractiveTile;
 import tools.uTool_AssetSetter;
+import ui.ui_tools.UI_Tools;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +57,13 @@ public class GamePanel extends JPanel implements Runnable {
     Sound se = new Sound();
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
-    public UI ui = new UI(this);
+
+    public UI_Tools tools = new UI_Tools(this);
+
+    public UI ui = new UI(this, tools);
+
+
+
     public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
     //endregion

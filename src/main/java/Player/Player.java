@@ -375,7 +375,7 @@ public class Player extends Aggressive_Entity {
                 else {
                     text = "Inventory is full !";
                 }
-                gp.ui.addMessage(text);
+                gp.ui.PlayState().addMessage(text);
             }
             gp.obj[i] = null;
         }
@@ -420,14 +420,14 @@ public class Player extends Aggressive_Entity {
                 }
 
                 ((Monster)gp.monster[i]).life -= damage;
-                gp.ui.addMessage(damage + " damage !");
+                gp.ui.PlayState().addMessage(damage + " damage !");
                 ((Alive_Entity)gp.monster[i]).invincible = true;
                 ((Alive_Entity)gp.monster[i]).damageReaction();
 
                 if (((Monster)gp.monster[i]).life <=0) {
                     ((Aggressive_Entity)gp.monster[i]).dying = true;
-                    gp.ui.addMessage(gp.monster[i].name + " is dead !");
-                    gp.ui.addMessage("Exp + " + ((Aggressive_Entity)gp.monster[i]).exp + " !");
+                    gp.ui.PlayState().addMessage(gp.monster[i].name + " is dead !");
+                    gp.ui.PlayState().addMessage("Exp + " + ((Aggressive_Entity)gp.monster[i]).exp + " !");
                     exp += ((Aggressive_Entity)gp.monster[i]).exp;
                     checkLevelUp();
                 }
@@ -465,15 +465,17 @@ public class Player extends Aggressive_Entity {
 
             gp.playSE(E_Sound.LEVELUP);
             gp.gameState = E_GameState.DIALOGUE;
-            gp.ui.currentDialogue = "You are level " + level + " now !\n"
-                    + "You feel a little bit stronger !";
+            gp.ui.DialogueState().setCurrentDialogue(
+                    "You are level " + level + " now !\n"
+                    + "You feel a little bit stronger !");
+
 
         }
     }
 
     public void selectItem() {
 
-        int itemIndex = gp.ui.getItemIndexOnSlot();
+        int itemIndex = gp.ui.CharacterState().getItemIndexOnSlot();
 
         if(itemIndex < inventory.size()) {
             Entity selectedItem = inventory.get(itemIndex);

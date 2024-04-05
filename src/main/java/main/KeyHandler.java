@@ -38,92 +38,94 @@ public class KeyHandler implements KeyListener {
         else if (gp.gameState == E_GameState.CHARACTER) {characterState(code);} // CHARACTER
     }
     public void titleState(int code) {
+        int commandNum = gp.ui.TitleState().CommandNum();
+
         if (gp.ui.gameState == E_GameState.TITLE) {
             if (code == KeyEvent.VK_Z) {
-                if (gp.ui.commandNum <= 0) {
-                    gp.ui.commandNum = 2;
+                if (commandNum  <= 0) {
+                    gp.ui.TitleState().setCommandNum(2);
                 }
-                else gp.ui.commandNum--;
+                else gp.ui.TitleState().setCommandNum(commandNum-1);
             }
             if (code == KeyEvent.VK_S) {
-                if(gp.ui.commandNum >= 2){
-                    gp.ui.commandNum = 0;
+                if(commandNum  >= 2){
+                    gp.ui.TitleState().setCommandNum(0);
                 }
-                else gp.ui.commandNum++;
+                else gp.ui.TitleState().setCommandNum(commandNum+1);
             }
             if (code == KeyEvent.VK_ENTER) {
-                if(gp.ui.commandNum == 0) {//NEW GAME
+                if(commandNum  == 0) {//NEW GAME
                     gp.ui.gameState = E_GameState.TITLE2;
                     //gp.playMusic(0);
                 }
-                if(gp.ui.commandNum == 1) {//LOAD GAME
+                if(commandNum  == 1) {//LOAD GAME
                     //LATER
                 }
-                if(gp.ui.commandNum == 2) {//QUIT
+                if(commandNum == 2) {//QUIT
                     System.exit(0);
                 }
             }
         } else if (gp.ui.gameState == E_GameState.TITLE2) {
             if (code == KeyEvent.VK_Z) {
-                if (gp.ui.commandNum <= 0) {
-                    gp.ui.commandNum = 3;
+                if (commandNum  <= 0) {
+                    gp.ui.TitleState().setCommandNum(3);
                 }
-                else gp.ui.commandNum--;
+                else gp.ui.TitleState().setCommandNum(commandNum-1);
             }
             if (code == KeyEvent.VK_S) {
-                if(gp.ui.commandNum >= 3){
-                    gp.ui.commandNum = 0;
+                if(commandNum  >= 3){
+                    gp.ui.TitleState().setCommandNum(0);
                 }
-                else gp.ui.commandNum++;
+                else gp.ui.TitleState().setCommandNum(commandNum+1);
             }
             if (code == KeyEvent.VK_ENTER) {
-                if(gp.ui.commandNum == 0) {
+                if(commandNum  == 0) {
                     gp.player.mainClass = E_Main_Class.GUERRIER;
                     gp.player.GetClassAttributs();
                     gp.ui.gameState = E_GameState.TITLE3;
                 }
-                if(gp.ui.commandNum == 1) {
+                if(commandNum  == 1) {
                     gp.player.mainClass = E_Main_Class.LANCE_PIERRE;
                     gp.player.GetClassAttributs();
                     gp.ui.gameState = E_GameState.TITLE3;
                 }
-                if(gp.ui.commandNum == 2) {
+                if(commandNum  == 2) {
                     gp.player.mainClass = E_Main_Class.SORCIER;
                     gp.player.GetClassAttributs();
                     gp.ui.gameState = E_GameState.TITLE3;
                 }
-                if(gp.ui.commandNum == 3) {
+                if(commandNum  == 3) {
                     gp.ui.gameState = E_GameState.TITLE;
                 }
             }
         }
         else if (gp.ui.gameState == E_GameState.TITLE3) {
             if (code == KeyEvent.VK_Z) {
-                if (gp.ui.commandNum <= 0) {
-                    gp.ui.commandNum = 2;
+                if (commandNum  <= 0) {
+                    gp.ui.TitleState().setCommandNum(2);
                 }
-                else gp.ui.commandNum--;
+                else gp.ui.TitleState().setCommandNum(commandNum-1);
             }
             if (code == KeyEvent.VK_S) {
-                if(gp.ui.commandNum >= 2){
-                    gp.ui.commandNum = 0;
+                if(commandNum  >= 2){
+                    gp.ui.TitleState().setCommandNum(0);
                 }
-                else gp.ui.commandNum++;
+                else gp.ui.TitleState().setCommandNum(commandNum+1);
             }
             if (code == KeyEvent.VK_ENTER) {
-                if(gp.ui.commandNum == 0) {
+                if(commandNum  == 0) {
                     gp.player.specie = E_species.DWARF;
                     gp.player.setDefaultValues();
                     gp.gameState = E_GameState.PLAY;
                     gp.playMusic(E_Sound.BLUEBOYADVENTURE);
                 }
-                if(gp.ui.commandNum == 1) {
+                if(commandNum  == 1) {
                     gp.player.specie = E_species.HUMAN;
                     gp.player.setDefaultValues();
                     gp.gameState = E_GameState.PLAY;
                     gp.playMusic(E_Sound.BLUEBOYADVENTURE);
                 }
-                if(gp.ui.commandNum == 2) {
+                if(commandNum == 2) {
                     gp.ui.gameState = E_GameState.TITLE2;
                 }
             }
@@ -181,26 +183,26 @@ public class KeyHandler implements KeyListener {
             gp.gameState = E_GameState.PLAY;
         }
         if(code == KeyEvent.VK_Z) {
-            if(gp.ui.slotRow !=0) {
-                gp.ui.slotRow--;
+            if(gp.ui.CharacterState().slotRow !=0) {
+                gp.ui.CharacterState().slotRow--;
                 gp.playSE(E_Sound.CURSOR);
             }
         }
         if(code == KeyEvent.VK_S) {
-            if(gp.ui.slotRow !=3) {
-                gp.ui.slotRow++;
+            if(gp.ui.CharacterState().slotRow !=3) {
+                gp.ui.CharacterState().slotRow++;
                 gp.playSE(E_Sound.CURSOR);
             }
         }
         if(code == KeyEvent.VK_Q) {
-            if(gp.ui.slotCol !=0) {
-                gp.ui.slotCol--;
+            if(gp.ui.CharacterState().slotCol !=0) {
+                gp.ui.CharacterState().slotCol--;
                 gp.playSE(E_Sound.CURSOR);
             }
         }
         if(code == KeyEvent.VK_D) {
-            if(gp.ui.slotCol !=4) {
-            gp.ui.slotCol++;
+            if(gp.ui.CharacterState().slotCol !=4) {
+            gp.ui.CharacterState().slotCol++;
             gp.playSE(E_Sound.CURSOR);
             }
         }

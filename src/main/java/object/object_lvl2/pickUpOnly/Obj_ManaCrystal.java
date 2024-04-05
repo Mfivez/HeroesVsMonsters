@@ -24,7 +24,7 @@ public class Obj_ManaCrystal extends PickUpOnly {
 
     public void use(Player player) {
         gp.playSE(E_Sound.POWERUP);
-        gp.ui.addMessage("Mana +" + value);
+        gp.ui.PlayState().addMessage("Mana +" + value);
         player.mana += value;
     }
 }

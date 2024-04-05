@@ -22,6 +22,7 @@ public abstract class Mobile_Entity extends Solid_Entity  {
             image = entitySprites[spriteNumber+getActualSprite()];}
 
         else if (this instanceof Aggressive_Entity) {
+            if (entitySprites.length == 2) {spriteNumber = 0;}
             changePos = ((Aggressive_Entity)this).getAttackSprite(spriteNumber, direction);}
 
         return changePos;
@@ -29,6 +30,9 @@ public abstract class Mobile_Entity extends Solid_Entity  {
         //    image = ((Objects)this).entitySprites[0];}
 
     }
+
+
+
 
     public int getActualSprite() {
         return this.spriteNum == E_ActualSprite.SPRITE1 ? 0 : 1;}

@@ -82,9 +82,12 @@ public abstract class Aggressive_Entity extends Alive_Entity {
     public boolean getAttackSprite(int spriteNumber, E_Direction direction) {
         boolean needChange = false;
         int coefPlayerWeapon = 1;
+
         if (this instanceof Player) { coefPlayerWeapon = ((Player)this).getPlayerAttackSprite();}
 
-        if (!attacking){image= entitySprites[spriteNumber+getActualSprite()];}
+
+
+        if (!attacking && entitySprites.length != 1){;image= entitySprites[spriteNumber+getActualSprite()];}
 
         if(attacking){image= ((Aggressive_Entity)this).entitySprites[(spriteNumber+(8*coefPlayerWeapon))+getActualSprite()]; needChange = true;}
 

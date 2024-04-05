@@ -24,8 +24,9 @@ public class Obj_Potion_Red extends Consumable {
             value = gp.player.maxLife - gp.player.life;}
 
 
-        gp.ui.currentDialogue = "You drink the " + name + "!\n"
-                + "Your life has been recovered by " + value + ".";
+        gp.ui.DialogueState().setCurrentDialogue(
+                "You drink the " + name + "!\n"
+                + "Your life has been recovered by " + value + ".");
         player.life += value;
 
         gp.playSE(E_Sound.POWERUP);

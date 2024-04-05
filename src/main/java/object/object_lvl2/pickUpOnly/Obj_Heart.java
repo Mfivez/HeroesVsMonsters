@@ -26,7 +26,7 @@ public class Obj_Heart extends PickUpOnly {
 
     public void use(Player player) {
         gp.playSE(E_Sound.POWERUP);
-        gp.ui.addMessage("Life +" + value);
+        gp.ui.PlayState().addMessage("Life +" + value);
         player.life += value;
     }
 }

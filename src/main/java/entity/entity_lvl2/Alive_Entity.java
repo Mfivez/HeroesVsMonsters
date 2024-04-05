@@ -54,7 +54,7 @@ public abstract class Alive_Entity extends Mobile_Entity {
         if(((Passive_Entity)this).dialogues[((Passive_Entity)this).dialogueIndex] == null) { //Recommencer la liste de dialogues
             ((Passive_Entity)this).dialogueIndex = E_MagicalNumber.RESET_DIALOGUE_INDEX.Value();
         }
-        gp.ui.currentDialogue = ((Passive_Entity)this).dialogues[((Passive_Entity)this).dialogueIndex];
+        gp.ui.DialogueState().setCurrentDialogue(((Passive_Entity)this).dialogues[((Passive_Entity)this).dialogueIndex]);
         ((Passive_Entity)this).dialogueIndex++;
         // endregion
 

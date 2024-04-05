@@ -24,7 +24,7 @@ public class Obj_Coin_Bronze extends PickUpOnly {
     }
     public void use(Player player) {
         gp.playSE(E_Sound.COIN);
-        gp.ui.addMessage("Coin +" +value);
+        gp.ui.PlayState().addMessage("Coin +" +value);
         gp.player.coin += value;
     }
 

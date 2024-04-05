@@ -73,7 +73,7 @@ public class EventHandler {
 
     public void teleport(E_GameState gameState) {
         gp.gameState = gameState;
-        gp.ui.currentDialogue = "Teleport!";
+        gp.ui.DialogueState().setCurrentDialogue("Teleport!");
         gp.player.worldX = gp.tileSize*37;
         gp.player.worldY = gp.tileSize*10;
     }
@@ -81,7 +81,7 @@ public class EventHandler {
     public void damagePit(int col, int row, E_GameState gameState) {
         gp.gameState = gameState;
         gp.playSE(E_Sound.RECEIVEDAMAGE);
-        gp.ui.currentDialogue = "You fall into a pit!";
+        gp.ui.DialogueState().setCurrentDialogue("You fall into a pit!");
         gp.player.life -=1;
         eventRect[col][row].eventDone = true; // Désactiver après une utilisation
         canTouchEvent = false;
@@ -93,7 +93,7 @@ public class EventHandler {
             gp.gameState = gameState;
             gp.player.attackCanceled = true;
             gp.playSE(E_Sound.COIN);
-            gp.ui.currentDialogue = "incr comment je me heal";
+            gp.ui.DialogueState().setCurrentDialogue("incr comment je me heal");
             gp.player.life = gp.player.maxLife;
             gp.player.mana = gp.player.maxMana;
             gp.aSetter.setMonster(); // Fais réapparaitre les monstres quand je me soigne

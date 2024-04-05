@@ -48,7 +48,7 @@ public class Obj_Rock extends Projectile {
     public void use(Entity entity) {
         if (gp.player.mainClass == E_Main_Class.LANCE_PIERRE) {
             gp.playSE(E_Sound.COIN);
-            gp.ui.addMessage("Ammo +" + useCost);
+            gp.ui.PlayState().addMessage("Ammo +" + useCost);
             ((Aggressive_Entity)entity).ammo += useCost;
         }
     }

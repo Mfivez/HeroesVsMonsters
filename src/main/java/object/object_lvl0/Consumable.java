@@ -1,8 +1,7 @@
 package object.object_lvl0;
 
 import Player.Player;
-import entity.Entity;
-import interfaces.I_Consumable_Obj;
+import object.object_interface.I_Consumable_Obj;
 import main.GamePanel;
 import enums.E_EntityType;
 import object.Objects;

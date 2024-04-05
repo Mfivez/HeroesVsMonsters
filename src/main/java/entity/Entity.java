@@ -302,6 +302,7 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
         int screenX = getScreenCord("X"); int tempScreenX = screenX;
         int screenY = getScreenCord("Y"); int tempScreenY = screenY;
         boolean changePos = false;
+
         if (this instanceof Mobile_Entity) {
             switch(direction){
                 case DOWN-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(0, E_Direction.DOWN);
@@ -325,7 +326,7 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
 
          g2.drawImage(image, tempScreenX, tempScreenY, null);
 
-                  //RESET ALPHA FOR DYING
+        //RESET ALPHA FOR DYING
          changeAlpha(g2,1f);
          }
 

@@ -1,4 +1,4 @@
-package interfaces;
+package object.object_interface;
 
 import Player.Player;
 import entity.Entity;
