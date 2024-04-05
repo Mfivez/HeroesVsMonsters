@@ -19,7 +19,7 @@ public abstract class Monster extends Aggressive_Entity {
         // region MONSTER HP BAR
         if (hpBarOn) {
 
-            double oneScale = (double)gp.tileSize/((Monster)this).maxLife;
+            double oneScale = (double)gp.tileSize/ this.maxLife;
             double hpBarValue = oneScale*life;
 
             g2.setColor(E_RGB_COLOR.GRAY_OF_MONSTER_HP_BARRE.getColor());

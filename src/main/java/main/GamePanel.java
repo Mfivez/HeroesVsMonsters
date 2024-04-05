@@ -126,7 +126,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         // region ATTRIBUTS
         long lastTime = System.nanoTime();
-        double ns = E_TimeUnit.SECOND.getTime() / FPS; // Convertit FPS en nanosecondes
+        double ns = (double) E_TimeUnit.SECOND.getTime() / FPS; // Convertit FPS en nanosecondes
         double delta = 0;
         int frames = 0;
         long timer = System.nanoTime();

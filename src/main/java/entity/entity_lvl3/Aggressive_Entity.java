@@ -14,11 +14,6 @@ import java.awt.image.BufferedImage;
 
 public abstract class Aggressive_Entity extends Alive_Entity {
     public Projectile projectile;
-    public BufferedImage
-            upAttack1, upAttack2
-            , downAttack1, downAttack2
-            , leftAttack1, leftAttack2
-            , rightAttack1, rightAttack2;
     public boolean dying = false;
     public boolean hpBarOn = false;
     public boolean ammoRegen = false; //gère la régène mana & munition
@@ -49,13 +44,13 @@ public abstract class Aggressive_Entity extends Alive_Entity {
      * @param g2 L'objet Graphics2D utilisé pour dessiner.
      */
     public void dyingAnimation(Graphics2D g2) {
-        ((Aggressive_Entity)this).dyingCounter++;
-        int remainder = ((Aggressive_Entity)this).dyingCounter % 10; // Calcule le reste de la division entière du compteur de mort par 10
+        this.dyingCounter++;
+        int remainder = this.dyingCounter % 10; // Calcule le reste de la division entière du compteur de mort par 10
         float alpha = (remainder <= 5) ? 0f : 1f; // Détermine l'opacité en fonction du reste calculé
         changeAlpha(g2, alpha);// Modifie l'opacité
 
-        if (((Aggressive_Entity)this).dyingCounter > E_MagicalNumber.DYING_DURATION.Value()) {
-            ((Alive_Entity)this).alive = false;
+        if (this.dyingCounter > E_MagicalNumber.DYING_DURATION.Value()) {
+            this.alive = false;
         }
     }
 

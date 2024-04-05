@@ -304,10 +304,10 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
         boolean changePos = false;
         if (this instanceof Mobile_Entity) {
             switch(direction){
-                case DOWN-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 0, E_Direction.DOWN);
-                case UP-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 2, E_Direction.UP);
-                case LEFT-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 4, E_Direction.LEFT);
-                case RIGHT-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(g2, 6, E_Direction.RIGHT);
+                case DOWN-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(0, E_Direction.DOWN);
+                case UP-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(2, E_Direction.UP);
+                case LEFT-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(4, E_Direction.LEFT);
+                case RIGHT-> changePos = ((Mobile_Entity)this).drawMoveAndAttack(6, E_Direction.RIGHT);
             }
         }
 

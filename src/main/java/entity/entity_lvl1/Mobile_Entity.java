@@ -16,7 +16,7 @@ public abstract class Mobile_Entity extends Solid_Entity  {
     }
 
 
-    public boolean drawMoveAndAttack(Graphics2D g2, int spriteNumber, E_Direction direction) {
+    public boolean drawMoveAndAttack(int spriteNumber, E_Direction direction) {
         boolean changePos = false;
         if (this instanceof Alive_Entity && !(this instanceof Aggressive_Entity)) {
             image = entitySprites[spriteNumber+getActualSprite()];}
@@ -31,6 +31,6 @@ public abstract class Mobile_Entity extends Solid_Entity  {
     }
 
     public int getActualSprite() {
-        return ((Solid_Entity)this).spriteNum == E_ActualSprite.SPRITE1 ? 0 : 1;}
+        return this.spriteNum == E_ActualSprite.SPRITE1 ? 0 : 1;}
 }
 
