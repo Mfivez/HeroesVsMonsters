@@ -121,7 +121,6 @@ public class eTool_SpriteSetter {
 
         for (int i = 0; i < spriteDirection.size(); i++) {
             try {
-                System.out.println(spriteDirection.get(i));
                 BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/" + folder + "/" + spriteDirection.get(i) + ".png")));
                 if (canUse && (spriteDirection.get(i).contains("attack") || spriteDirection.get(i).contains("axe")) ) {
                     if (spriteDirection.get(i).contains("left") ||spriteDirection.get(i).contains("right")) {

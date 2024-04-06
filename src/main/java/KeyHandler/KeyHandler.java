@@ -1,30 +1,29 @@
-package main;
+package KeyHandler;
 
 
 import enums.E_GameState;
 import enums.E_Main_Class;
 import enums.E_Sound;
 import enums.E_species;
+import main.GamePanel;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
     GamePanel gp;
-    public boolean upPressed, downPressed, rightPressed, leftPressed
-                  ,enterPressed, shotKeyPressed;
+    public boolean upPressed, downPressed, rightPressed, leftPressed ,enterPressed, shotKeyPressed;
     // region DEBUG
-    boolean showDebugText = false;
+    public boolean showDebugText = false;
     // endregion
+
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
+    public void keyTyped(KeyEvent e) {}
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -37,6 +36,8 @@ public class KeyHandler implements KeyListener {
         else if (gp.gameState == E_GameState.DIALOGUE) {dialogueState(code);} // DIALOGUE
         else if (gp.gameState == E_GameState.CHARACTER) {characterState(code);} // CHARACTER
     }
+
+
     public void titleState(int code) {
         int commandNum = gp.ui.TitleState().CommandNum();
 

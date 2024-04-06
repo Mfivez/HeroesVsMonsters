@@ -1,6 +1,7 @@
 package projectile;
 
 import entity.Entity;
+import entity.entity_lvl0.Solid_Entity;
 import entity.entity_lvl3.Aggressive_Entity;
 import main.GamePanel;
 import enums.E_Direction;
@@ -26,7 +27,7 @@ public abstract class Projectile extends Aggressive_Entity {
     public void update(){
 
             if (user == gp.player) {
-                int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+                int monsterIndex = gp.cChecker.aliveEntity().check(this, (Solid_Entity[]) gp.monster);
                 if (monsterIndex != 999) {
                     gp.player.damageMonster(monsterIndex, attack);
                     generateParticle(gp.player.projectile, gp.monster[monsterIndex]);
@@ -35,7 +36,7 @@ public abstract class Projectile extends Aggressive_Entity {
 
             }
             if (user != gp.player) {
-                boolean contactPlayer = gp.cChecker.checkPlayer(this);
+                boolean contactPlayer = gp.cChecker.player().check(this);
                 if(!gp.player.invincible && contactPlayer) {
                     damagePlayer(attack);
                     generateParticle(((Aggressive_Entity)user).projectile, gp.player);

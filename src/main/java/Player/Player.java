@@ -6,7 +6,7 @@ import entity.entity_lvl2.Alive_Entity;
 import entity.entity_lvl3.Aggressive_Entity;
 import enums.*;
 import main.GamePanel;
-import main.KeyHandler;
+import KeyHandler.KeyHandler;
 
 
 import monster.Monster;
@@ -188,22 +188,22 @@ public class Player extends Aggressive_Entity {
 
             //CHECK TILE COLLISION
             collisionOn = false;
-            gp.cChecker.checkTile(this);
+            gp.cChecker.tile().check(this);
 
             //CHECK OBJECT COLLISION
-            int objIndex = gp.cChecker.checkObject(this, true);
+            int objIndex = gp.cChecker.object().check(this, true);
             pickUpObject(objIndex);
 
             //CHECK NPC COLLISION
-            int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
+            int npcIndex = gp.cChecker.aliveEntity().check(this, gp.npc);
             interactNPC(npcIndex);
 
             //CHECK MONSTER COLLISION
-            int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+            int monsterIndex = gp.cChecker.aliveEntity().check(this, gp.monster);
             contactMonster(monsterIndex);
 
             //CHECK ITILES COLLISION
-            int iTilesIndex = gp.cChecker.checkEntity(this, gp.iTile);
+            int iTilesIndex = gp.cChecker.aliveEntity().check(this, gp.iTile);
 
 
 
@@ -328,10 +328,10 @@ public class Player extends Aggressive_Entity {
             solidArea.height = attackArea.height;
 
             //Check Monster collision with the updated worldX/Y & solidArea
-            int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+            int monsterIndex = gp.cChecker.aliveEntity().check(this, gp.monster);
             damageMonster(monsterIndex, attack);
 
-            int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
+            int iTileIndex = gp.cChecker.aliveEntity().check(this, gp.iTile);
             damageInteractiveTile(iTileIndex);
 
             //After checking collision, restore the original data

@@ -239,8 +239,8 @@ public abstract class Entity implements   I_Entity_Drawer, I_Entity_updater
 
         // region COLLISION
         ((Solid_Entity)this).collisionOn = false;
-        gp.cChecker.checkAll(this);
-        boolean contactPlayer = gp.cChecker.checkPlayer(this);
+        gp.cChecker.check(this);
+        boolean contactPlayer = gp.cChecker.player().check((Solid_Entity)this);
         // endregion
 
         // region DAMAGE MONSTER TO PLAYER

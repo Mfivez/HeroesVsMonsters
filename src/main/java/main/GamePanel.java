@@ -1,9 +1,11 @@
 package main;
 
+import KeyHandler.KeyHandler;
 import asset_setter.AssetSetter;
 import Player.Player;
 import Tiles.TilesManager;
-import coliision_checker.CollisionChecker;
+import collision_checker.Collision_Checker;
+import collision_checker.coll_checker_tools.cCheck_Tools;
 import ui.UI;
 import entity.Entity;
 import entity.entity_lvl2.Alive_Entity;
@@ -57,13 +59,14 @@ public class GamePanel extends JPanel implements Runnable {
     public KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound se = new Sound();
-    public CollisionChecker cChecker = new CollisionChecker(this);
+
+
+
     public AssetSetter aSetter = new AssetSetter(this);
 
-    public UI_Tools tools = new UI_Tools(this);
 
-    public UI ui = new UI(this, tools);
-
+    public Collision_Checker cChecker = new Collision_Checker(this, new cCheck_Tools(this));
+    public UI ui = new UI(this, new UI_Tools(this));
 
 
     public EventHandler eHandler = new EventHandler(this);
@@ -133,7 +136,6 @@ public class GamePanel extends JPanel implements Runnable {
      */
     @Override
     public void run() {
-
         // region ATTRIBUTS
         long lastTime = System.nanoTime();
         double ns = (double) E_TimeUnit.SECOND.getTime() / FPS; // Convertit FPS en nanosecondes
