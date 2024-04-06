@@ -8,10 +8,9 @@ import ui.ui_tools.UI_Tools;
 import java.awt.*;
 
 public class UI_DialogueState implements I_UI {
-    private UI_Tools tools;
+    private final UI_Tools tools;
     private String currentDialogue = "";
     private final GamePanel gp;
-    private Graphics2D g2;
 
 
     public UI_DialogueState(GamePanel gp, UI_Tools tools) {
@@ -23,7 +22,6 @@ public class UI_DialogueState implements I_UI {
      * Dessine l'écran de dialogue.
      */
     public void draw(Graphics2D g2) {
-        this.g2 = g2;
 
 
         // WINDOW

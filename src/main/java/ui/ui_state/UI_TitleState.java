@@ -1,16 +1,14 @@
 package ui.ui_state;
 
-import enums.E_GameState;
 import main.GamePanel;
 import ui.I_UI;
-import ui.UI;
 import ui.ui_tools.UI_Tools;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class UI_TitleState implements I_UI {
-    private UI_Tools tools;
+    private final UI_Tools tools;
     private int commandNum = 0;
     private Graphics2D g2;
     private final GamePanel gp;
