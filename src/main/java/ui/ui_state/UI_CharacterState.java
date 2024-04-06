@@ -6,12 +6,13 @@ import enums.E_RGB_COLOR;
 import main.GamePanel;
 import object.Objects;
 import projectile.Obj_Rock;
+import ui.I_UI;
 import ui.ui_tools.UI_Tools;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class UI_CharacterState {
+public class UI_CharacterState implements I_UI {
 
     // region ATTRIBUTS
     private UI_Tools tools;

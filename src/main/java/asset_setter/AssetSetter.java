@@ -1,8 +1,9 @@
-package main;
+package asset_setter;
 
 
+import asset_setter.Assetter_tool.AssetSetter_Tool;
 import enums.E_MagicalNumber;
-import tools.uTool_AssetSetter;
+import main.GamePanel;
 import npc.npc_lvl1.Npc_OldMan;
 import monster.monster_lvl0.MOB_GreenSlim;
 import object.object_lvl2.equipable.Obj_Axe;
@@ -40,7 +41,7 @@ public class AssetSetter {
     }
 
     /** ---- setObject() ----<p>
-     *Cette fonction utilise {@link uTool_AssetSetter} pour disposer sur le terrain les entités de catégorie OBJECT
+     *Cette fonction utilise {@link AssetSetter_Tool} pour disposer sur le terrain les entités de catégorie OBJECT
      */
     public void setObject() {
         gp.uToolAssetSetter.setSomething(new Object(){}.getClass().getEnclosingMethod().getName(),
@@ -49,7 +50,7 @@ public class AssetSetter {
     }
 
     /** ---- setNPC() ----<p>
-     *Cette fonction utilise {@link uTool_AssetSetter} pour disposer sur le terrain les entités de catégorie NPC
+     *Cette fonction utilise {@link AssetSetter_Tool} pour disposer sur le terrain les entités de catégorie NPC
      */
     public void setNPC() {
         gp.uToolAssetSetter.setSomething(new Object(){}.getClass().getEnclosingMethod().getName(),
@@ -58,7 +59,7 @@ public class AssetSetter {
     }
 
     /**  ---- setMonsters() ---- <p>
-     *Cette fonction utilise {@link uTool_AssetSetter} pour disposer sur le terrain les entités de catégorie MONSTER
+     *Cette fonction utilise {@link AssetSetter_Tool} pour disposer sur le terrain les entités de catégorie MONSTER
      */
     public void setMonster() {
         if (gp.player != null){
@@ -96,7 +97,7 @@ public class AssetSetter {
     }
 
     /** ---- setInteractiveTile() ----
-     *Cette fonction utilise {@link uTool_AssetSetter} pour disposer sur le terrain les entités de catégorie iTILES
+     *Cette fonction utilise {@link AssetSetter_Tool} pour disposer sur le terrain les entités de catégorie iTILES
      */
     public void setInteractiveTile() {
         gp.uToolAssetSetter.setSomething(new Object(){}.getClass().getEnclosingMethod().getName(),

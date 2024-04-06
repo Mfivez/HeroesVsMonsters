@@ -1,10 +1,10 @@
-package tools;
+package asset_setter.Assetter_tool;
 import entity.Entity;
 import main.GamePanel;
 import enums.E_EntityCategory;
 import tiles_interactive.InteractiveTile;
 
-public class uTool_AssetSetter {
+public class AssetSetter_Tool {
 
     //region COUNTER
     GamePanel gp;
@@ -17,7 +17,7 @@ public class uTool_AssetSetter {
      *
      * @param gp Instance du GamePanel
      */
-    public uTool_AssetSetter(GamePanel gp) {
+    public AssetSetter_Tool(GamePanel gp) {
         this.gp = gp;
     }
 

@@ -1,10 +1,9 @@
 package enums;
 
 public enum E_TimeUnit {
-    MILLISECONDS(1_000_000),
     SECOND(1_000_000_000), // Une seconde
-    MINUTE(SECOND.getTime() * 60), // Une minute
-    HOUR(MINUTE.getTime() * 60); // Une heure
+    MINUTE(SECOND.getTime() * 60); // Une minute
+
 
     private final long nanoseconds;
 

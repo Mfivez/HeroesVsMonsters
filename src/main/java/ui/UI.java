@@ -8,7 +8,7 @@ import ui.ui_tools.UI_Tools;
 
 import java.awt.*;
 
-public class UI {
+public class UI implements I_UI {
     private UI_Tools tools;
 
     public E_GameState gameState = E_GameState.TITLE;
@@ -40,7 +40,7 @@ public class UI {
         g2.setColor(Color.WHITE);
 
         switch (gp.gameState) {
-            case TITLE -> title.draw(g2, gameState);
+            case TITLE -> title.draw(g2);
             case PLAY -> play.draw(g2);
             case PAUSE -> pause.draw(g2);
             case DIALOGUE -> dialogue.draw(g2);

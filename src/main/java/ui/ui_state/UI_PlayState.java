@@ -1,12 +1,13 @@
 package ui.ui_state;
 
 import main.GamePanel;
+import ui.I_UI;
 import ui.ui_tools.UI_Tools;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class UI_PlayState {
+public class UI_PlayState implements I_UI {
     private UI_Tools tools;
     private Graphics2D g2;
     private final GamePanel gp;

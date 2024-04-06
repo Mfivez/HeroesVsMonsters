@@ -5,5 +5,5 @@ public enum E_Direction {
     DOWN,
     LEFT,
     RIGHT,
-    ANY //Aucune direction ciblée
+    ANY
 }

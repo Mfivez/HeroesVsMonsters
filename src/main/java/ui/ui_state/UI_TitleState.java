@@ -2,12 +2,14 @@ package ui.ui_state;
 
 import enums.E_GameState;
 import main.GamePanel;
+import ui.I_UI;
+import ui.UI;
 import ui.ui_tools.UI_Tools;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class UI_TitleState {
+public class UI_TitleState implements I_UI {
     private UI_Tools tools;
     private int commandNum = 0;
     private Graphics2D g2;
@@ -21,11 +23,11 @@ public class UI_TitleState {
     /**
      * Dessine l'écran de titre.
      */
-    public void draw(Graphics2D g2, E_GameState gameState) {
+    public void draw(Graphics2D g2) {
         this.g2 = g2;
 
 
-        switch (gameState) {
+        switch (gp.ui.gameState) {
             case TITLE -> drawAFullTitleScreenWhitImage(Color.WHITE, 56F, "HEROES VS MONSTERS", true,
                     new String[]{"NEW GAME", "LOAD GAME", "QUIT"}, ">",
                     gp.player.down1, gp.screenWidth / 2 - (gp.tileSize * 2) / 2, gp.tileSize * 2);

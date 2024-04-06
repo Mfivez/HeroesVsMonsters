@@ -1,7 +1,9 @@
 package main;
 
+import asset_setter.AssetSetter;
 import Player.Player;
 import Tiles.TilesManager;
+import coliision_checker.CollisionChecker;
 import ui.UI;
 import entity.Entity;
 import entity.entity_lvl2.Alive_Entity;
@@ -11,7 +13,7 @@ import enums.E_MagicalNumber;
 import enums.E_Sound;
 import enums.E_TimeUnit;
 import tiles_interactive.InteractiveTile;
-import tools.uTool_AssetSetter;
+import asset_setter.Assetter_tool.AssetSetter_Tool;
 import ui.ui_tools.UI_Tools;
 
 import javax.swing.*;
@@ -27,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
     // endregion
 
     // region UTILITY TOOLS
-    public uTool_AssetSetter uToolAssetSetter = new uTool_AssetSetter(this);
+    public AssetSetter_Tool uToolAssetSetter = new AssetSetter_Tool(this);
     // endregion
 
     // region SCREEN SETTINGS
@@ -51,7 +53,7 @@ public class GamePanel extends JPanel implements Runnable {
     // endregion
 
     // region SYSTEM
-    TilesManager tileM = new TilesManager(this);
+    public TilesManager tileM = new TilesManager(this);
     public KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound se = new Sound();

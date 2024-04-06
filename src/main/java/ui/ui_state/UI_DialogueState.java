@@ -2,11 +2,12 @@ package ui.ui_state;
 
 
 import main.GamePanel;
+import ui.I_UI;
 import ui.ui_tools.UI_Tools;
 
 import java.awt.*;
 
-public class UI_DialogueState {
+public class UI_DialogueState implements I_UI {
     private UI_Tools tools;
     private String currentDialogue = "";
     private final GamePanel gp;

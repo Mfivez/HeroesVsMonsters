@@ -1,9 +1,10 @@
-package main;
+package coliision_checker;
 
 
 import entity.Entity;
 import entity.entity_lvl0.Solid_Entity;
 import entity.entity_lvl2.Alive_Entity;
+import main.GamePanel;
 
 public class CollisionChecker {
     GamePanel gp;
