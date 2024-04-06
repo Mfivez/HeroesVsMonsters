@@ -40,7 +40,7 @@ public class KeyHandler implements KeyListener {
     public void titleState(int code) {
         int commandNum = gp.ui.TitleState().CommandNum();
 
-        if (gp.ui.gameState == E_GameState.TITLE) {
+        if (gp.ui.GameState() == E_GameState.TITLE) {
             if (code == KeyEvent.VK_Z) {
                 if (commandNum  <= 0) {
                     gp.ui.TitleState().setCommandNum(2);
@@ -55,7 +55,7 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_ENTER) {
                 if(commandNum  == 0) {//NEW GAME
-                    gp.ui.gameState = E_GameState.TITLE2;
+                    gp.ui.setGameState(E_GameState.TITLE2);
                     //gp.playMusic(0);
                 }
                 if(commandNum  == 1) {//LOAD GAME
@@ -65,7 +65,7 @@ public class KeyHandler implements KeyListener {
                     System.exit(0);
                 }
             }
-        } else if (gp.ui.gameState == E_GameState.TITLE2) {
+        } else if (gp.ui.GameState() == E_GameState.TITLE2) {
             if (code == KeyEvent.VK_Z) {
                 if (commandNum  <= 0) {
                     gp.ui.TitleState().setCommandNum(3);
@@ -82,24 +82,24 @@ public class KeyHandler implements KeyListener {
                 if(commandNum  == 0) {
                     gp.player.mainClass = E_Main_Class.GUERRIER;
                     gp.player.GetClassAttributs();
-                    gp.ui.gameState = E_GameState.TITLE3;
+                    gp.ui.setGameState(E_GameState.TITLE3);
                 }
                 if(commandNum  == 1) {
                     gp.player.mainClass = E_Main_Class.LANCE_PIERRE;
                     gp.player.GetClassAttributs();
-                    gp.ui.gameState = E_GameState.TITLE3;
+                    gp.ui.setGameState(E_GameState.TITLE3);
                 }
                 if(commandNum  == 2) {
                     gp.player.mainClass = E_Main_Class.SORCIER;
                     gp.player.GetClassAttributs();
-                    gp.ui.gameState = E_GameState.TITLE3;
+                    gp.ui.setGameState(E_GameState.TITLE3);
                 }
                 if(commandNum  == 3) {
-                    gp.ui.gameState = E_GameState.TITLE;
+                    gp.ui.setGameState(E_GameState.TITLE);
                 }
             }
         }
-        else if (gp.ui.gameState == E_GameState.TITLE3) {
+        else if (gp.ui.GameState() == E_GameState.TITLE3) {
             if (code == KeyEvent.VK_Z) {
                 if (commandNum  <= 0) {
                     gp.ui.TitleState().setCommandNum(2);
@@ -126,7 +126,7 @@ public class KeyHandler implements KeyListener {
                     gp.playMusic(E_Sound.BLUEBOYADVENTURE);
                 }
                 if(commandNum == 2) {
-                    gp.ui.gameState = E_GameState.TITLE2;
+                    gp.ui.setGameState(E_GameState.TITLE2);
                 }
             }
         }

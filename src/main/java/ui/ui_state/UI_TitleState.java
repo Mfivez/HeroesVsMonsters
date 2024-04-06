@@ -25,7 +25,7 @@ public class UI_TitleState implements I_UI {
         this.g2 = g2;
 
 
-        switch (gp.ui.gameState) {
+        switch (gp.ui.GameState()) {
             case TITLE -> drawAFullTitleScreenWhitImage(Color.WHITE, 56F, "HEROES VS MONSTERS", true,
                     new String[]{"NEW GAME", "LOAD GAME", "QUIT"}, ">",
                     gp.player.down1, gp.screenWidth / 2 - (gp.tileSize * 2) / 2, gp.tileSize * 2);

@@ -9,22 +9,19 @@ import ui.ui_tools.UI_Tools;
 import java.awt.*;
 
 public class UI implements I_UI {
-    private UI_Tools tools;
 
-    public E_GameState gameState = E_GameState.TITLE;
-    private UI_CharacterState character;
-    private UI_DialogueState dialogue;
-    private UI_PauseState pause;
-    private UI_PlayState play;
-    private UI_TitleState title;
-    private GamePanel gp;
-    private Graphics2D g2;
+    private E_GameState gameState = E_GameState.TITLE;
+    private final UI_CharacterState character;
+    private final UI_DialogueState dialogue;
+    private final UI_PauseState pause;
+    private final UI_PlayState play;
+    private final UI_TitleState title;
+    private final GamePanel gp;
     Font arial_40, arial_80B;
 
 
     public UI(GamePanel gp, UI_Tools tools) {
         this.gp = gp;
-        this.tools = tools;
         title = new UI_TitleState(gp, tools);
         play = new UI_PlayState(gp, tools);
         pause = new UI_PauseState(gp, tools);
@@ -34,7 +31,6 @@ public class UI implements I_UI {
 
 
     public void draw(Graphics2D g2) {
-        this.g2 = g2;
 
         g2.setFont(arial_40);
         g2.setColor(Color.WHITE);
