@@ -26,7 +26,8 @@ public class cCheck_Alive_Entity {
                 cCheck_Tools.moveSolidArea(entity);// Get entity's solid area position
                 cCheck_Tools.moveSolidArea(target[i]);// Get the object's solid area position
                 cCheck_Tools.updatePosition(entity); //Bouge l'entité selon gauche, haut,...
-                index = cCheck_Tools.checkCollisionEntities(entity, target[i], i); // Vérifie la collision
+                index = cCheck_Tools.checkCollisionEntities(entity, target[i], i, index); // Vérifie la collision
+                System.out.println(index);
                 cCheck_Tools.resetSolidArea(entity, target[i]);
             }
         }

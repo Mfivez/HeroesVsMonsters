@@ -17,7 +17,7 @@ public class cCheck_Player {
         cCheck_Tools.moveSolidArea(entity);// Get entity's solid area position
         cCheck_Tools.moveSolidArea(gp.player);// Get player's solid area position
         cCheck_Tools.updatePosition(entity);
-        cCheck_Tools.checkCollisionWithPlayer(entity, gp.player, contactPlayer);
+        contactPlayer = cCheck_Tools.checkCollisionWithPlayer(entity, gp.player, contactPlayer);
         cCheck_Tools.resetSolidArea(entity, gp.player);
 
         return contactPlayer;

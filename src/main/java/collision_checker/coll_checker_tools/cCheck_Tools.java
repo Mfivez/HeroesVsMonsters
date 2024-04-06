@@ -38,9 +38,10 @@ public class cCheck_Tools {
         }
     }
 
-    public static int checkCollisionEntities(Solid_Entity entity, Entity entity2, Integer i) {
-        int index = E_MagicalNumber.NOTHING.Value();
+    public static int checkCollisionEntities(Solid_Entity entity, Entity entity2, int i, int index) {
         if(entity.solidArea.intersects(((Solid_Entity)entity2).solidArea)) {
+            System.out.println("player " + entity.solidArea);
+            System.out.println("entity2 " + ((Solid_Entity) entity2).solidArea);
             if(entity2 != entity) { entity.collisionOn = true; index = i; }
         }
         return index;
