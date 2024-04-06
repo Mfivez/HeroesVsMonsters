@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 public class UI_CharacterState implements I_UI {
 
     // region ATTRIBUTS
-    private UI_Tools tools;
+    private final UI_Tools tools;
     private final GamePanel gp;
     private Graphics2D g2;
     public int slotCol = 0;

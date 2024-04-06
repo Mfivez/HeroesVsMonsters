@@ -53,7 +53,7 @@ public class AssetSetter_Tool {
 
         // region MONSTER
         if (functionName.contains(E_EntityCategory.MONSTER.Name())) {
-            int iMonster = 0;
+            int iMonster;
             for (Entity entity : entities) {
                 for (iMonster = 0; iMonster < gp.monster.length; iMonster++) {
                     if (gp.monster[iMonster] == null) {gp.monster[iMonster] = entity;break;}
