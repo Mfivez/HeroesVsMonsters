@@ -27,7 +27,7 @@ public abstract class Projectile extends Aggressive_Entity {
     public void update(){
 
             if (user == gp.player) {
-                int monsterIndex = gp.cChecker.aliveEntity().check(this, (Solid_Entity[]) gp.monster);
+                int monsterIndex = gp.cChecker.aliveEntity().check(this, gp.monster);
                 if (monsterIndex != 999) {
                     gp.player.damageMonster(monsterIndex, attack);
                     generateParticle(gp.player.projectile, gp.monster[monsterIndex]);

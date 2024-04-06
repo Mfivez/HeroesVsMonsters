@@ -31,10 +31,10 @@ public class cCheck_Tools {
 
     public static void updatePosition(Solid_Entity entity) {
         switch (entity.direction) {
-            case UP -> ((Solid_Entity)entity).solidArea.y -= ((Alive_Entity)entity).speed;
-            case DOWN -> ((Solid_Entity)entity).solidArea.y += ((Alive_Entity)entity).speed;
-            case RIGHT -> ((Solid_Entity)entity).solidArea.x += ((Alive_Entity)entity).speed;
-            case LEFT -> ((Solid_Entity)entity).solidArea.x -= ((Alive_Entity)entity).speed;
+            case UP -> entity.solidArea.y -= ((Alive_Entity)entity).speed;
+            case DOWN -> entity.solidArea.y += ((Alive_Entity)entity).speed;
+            case RIGHT -> entity.solidArea.x += ((Alive_Entity)entity).speed;
+            case LEFT -> entity.solidArea.x -= ((Alive_Entity)entity).speed;
         }
     }
 
