@@ -4,8 +4,7 @@ package ui.ui_tools;
 import enums.E_Main_Class;
 import enums.E_RGB_COLOR;
 import main.GamePanel;
-import projectile.Obj_Rock;
-import ui.UI;
+import projectile.projectile_lvl0.Obj_Rock;
 
 import java.awt.*;
 

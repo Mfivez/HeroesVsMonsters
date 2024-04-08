@@ -1,6 +1,5 @@
 package monster.monster_lvl0;
 
-import entity.Entity;
 import main.GamePanel;
 import enums.E_Direction;
 import enums.E_EntityType;
@@ -9,7 +8,7 @@ import monster.Monster;
 import object.object_lvl2.pickUpOnly.Obj_Coin_Bronze;
 import object.object_lvl2.pickUpOnly.Obj_Heart;
 import object.object_lvl2.pickUpOnly.Obj_ManaCrystal;
-import projectile.Obj_Rock;
+import projectile.projectile_lvl0.Obj_Rock;
 
 import java.util.Random;
 

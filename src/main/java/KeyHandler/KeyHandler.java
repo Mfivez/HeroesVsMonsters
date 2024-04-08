@@ -37,22 +37,17 @@ public class KeyHandler implements KeyListener {
         else if (gp.gameState == E_GameState.CHARACTER) {characterState(code);} // CHARACTER
     }
 
-
     public void titleState(int code) {
         int commandNum = gp.ui.TitleState().CommandNum();
 
         if (gp.ui.GameState() == E_GameState.TITLE) {
             if (code == KeyEvent.VK_Z) {
-                if (commandNum  <= 0) {
-                    gp.ui.TitleState().setCommandNum(2);
-                }
-                else gp.ui.TitleState().setCommandNum(commandNum-1);
+                switchCommandNum(commandNum, 0, 2, "<=");
             }
             if (code == KeyEvent.VK_S) {
-                if(commandNum  >= 2){
-                    gp.ui.TitleState().setCommandNum(0);
-                }
-                else gp.ui.TitleState().setCommandNum(commandNum+1);
+                switchCommandNum(commandNum, 2, 0, ">=");
+
+
             }
             if (code == KeyEvent.VK_ENTER) {
                 if(commandNum  == 0) {//NEW GAME
@@ -68,16 +63,10 @@ public class KeyHandler implements KeyListener {
             }
         } else if (gp.ui.GameState() == E_GameState.TITLE2) {
             if (code == KeyEvent.VK_Z) {
-                if (commandNum  <= 0) {
-                    gp.ui.TitleState().setCommandNum(3);
-                }
-                else gp.ui.TitleState().setCommandNum(commandNum-1);
+                switchCommandNum(commandNum, 0, 3, "<=");
             }
             if (code == KeyEvent.VK_S) {
-                if(commandNum  >= 3){
-                    gp.ui.TitleState().setCommandNum(0);
-                }
-                else gp.ui.TitleState().setCommandNum(commandNum+1);
+                switchCommandNum(commandNum, 3, 0, ">=");
             }
             if (code == KeyEvent.VK_ENTER) {
                 if(commandNum  == 0) {
@@ -102,16 +91,10 @@ public class KeyHandler implements KeyListener {
         }
         else if (gp.ui.GameState() == E_GameState.TITLE3) {
             if (code == KeyEvent.VK_Z) {
-                if (commandNum  <= 0) {
-                    gp.ui.TitleState().setCommandNum(2);
-                }
-                else gp.ui.TitleState().setCommandNum(commandNum-1);
+                switchCommandNum(commandNum, 0, 2, "<=");
             }
             if (code == KeyEvent.VK_S) {
-                if(commandNum  >= 2){
-                    gp.ui.TitleState().setCommandNum(0);
-                }
-                else gp.ui.TitleState().setCommandNum(commandNum+1);
+                switchCommandNum(commandNum, 2, 0, ">=");
             }
             if (code == KeyEvent.VK_ENTER) {
                 if(commandNum  == 0) {
@@ -131,8 +114,24 @@ public class KeyHandler implements KeyListener {
                 }
             }
         }
-
     }
+
+
+    public void switchCommandNum(int commandNum, int verificationInt, int ifCommandNum, String sign) {
+        if (sign.equals("<=")) {
+            if (commandNum  <= verificationInt) {
+                gp.ui.TitleState().setCommandNum(ifCommandNum);
+            } else gp.ui.TitleState().setCommandNum(commandNum-1);
+        }
+
+        if (sign.equals(">=")) {
+            if (commandNum >= verificationInt) {
+                gp.ui.TitleState().setCommandNum(ifCommandNum);
+            } else gp.ui.TitleState().setCommandNum(commandNum+1);
+        }
+    }
+
+
     public void playState(int code) {
 
         if(code == KeyEvent.VK_Z) {

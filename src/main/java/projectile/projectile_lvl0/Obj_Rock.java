@@ -1,4 +1,4 @@
-package projectile;
+package projectile.projectile_lvl0;
 
 import entity.Entity;
 import entity.entity_lvl3.Aggressive_Entity;
@@ -7,6 +7,7 @@ import enums.E_EntityType;
 import enums.E_Main_Class;
 import enums.E_RGB_COLOR;
 import enums.E_Sound;
+import projectile.Projectile;
 
 import java.awt.*;
 

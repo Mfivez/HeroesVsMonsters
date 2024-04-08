@@ -7,7 +7,7 @@ import main.GamePanel;
 import npc.npc_lvl1.Npc_OldMan;
 import monster.monster_lvl0.MOB_GreenSlim;
 import object.object_lvl2.equipable.Obj_Axe;
-import tiles_interactive.IT_DryTree;
+import tiles_interactive.iTile_lvl0.IT_DryTree;
 
 import java.util.Random;
 

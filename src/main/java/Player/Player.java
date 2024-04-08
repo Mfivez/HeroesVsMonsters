@@ -16,8 +16,8 @@ import object.object_lvl0.PickUpOnly;
 import object.object_lvl0.Shield;
 import object.object_lvl2.equipable.Obj_Sword_Normal;
 import object.object_lvl2.equipable.Obj_shield_Wood;
-import projectile.Obj_Fireball;
-import projectile.Obj_Rock;
+import projectile.projectile_lvl0.Obj_Fireball;
+import projectile.projectile_lvl0.Obj_Rock;
 
 import java.awt.*;
 import java.util.ArrayList;

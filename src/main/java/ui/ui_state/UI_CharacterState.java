@@ -5,7 +5,7 @@ import enums.E_Main_Class;
 import enums.E_RGB_COLOR;
 import main.GamePanel;
 import object.Objects;
-import projectile.Obj_Rock;
+import projectile.projectile_lvl0.Obj_Rock;
 import ui.I_UI;
 import ui.ui_tools.UI_Tools;
 

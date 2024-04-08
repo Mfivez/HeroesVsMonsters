@@ -1,10 +1,11 @@
-package projectile;
+package projectile.projectile_lvl0;
 
 
 import entity.Entity;
 import entity.entity_lvl3.Aggressive_Entity;
 import main.GamePanel;
 import enums.E_RGB_COLOR;
+import projectile.Projectile;
 
 import java.awt.*;
 
