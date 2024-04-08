@@ -2,7 +2,7 @@ package asset_setter.Assetter_tool;
 import entity.Entity;
 import main.GamePanel;
 import enums.E_EntityCategory;
-import tiles_interactive.InteractiveTile;
+import Tiles.tiles_interactive.InteractiveTile;
 
 public class AssetSetter_Tool {
 

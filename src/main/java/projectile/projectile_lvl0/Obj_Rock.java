@@ -15,14 +15,13 @@ public class Obj_Rock extends Projectile {
     public Obj_Rock(GamePanel gp) {
         super(gp);
         type = E_EntityType.PICKUPONLY;
-        name = "Rock";
         speed = 8;
         maxLife = 80;
         life = maxLife;
         attack = 2;
         useCost = 1;
         alive = false;
-        image = down1;
+        //image = down1;
     }
 
     public boolean haveResource(Entity user) {

@@ -1,11 +1,13 @@
 package main;
 
 import KeyHandler.KeyHandler;
+import Sound.Sound;
 import asset_setter.AssetSetter;
 import Player.Player;
 import Tiles.TilesManager;
 import collision_checker.Collision_Checker;
 import collision_checker.coll_checker_tools.cCheck_Tools;
+import event.EventHandler;
 import ui.UI;
 import entity.Entity;
 import entity.entity_lvl2.Alive_Entity;
@@ -14,7 +16,7 @@ import enums.E_GameState;
 import enums.E_MagicalNumber;
 import enums.E_Sound;
 import enums.E_TimeUnit;
-import tiles_interactive.InteractiveTile;
+import Tiles.tiles_interactive.InteractiveTile;
 import asset_setter.Assetter_tool.AssetSetter_Tool;
 import ui.ui_tools.UI_Tools;
 
@@ -75,7 +77,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     // region ENTITY & OBJECT
     public Player player;
-    //public Player2 player;
     public Entity[] obj = new Entity[20];
     public Entity[] npc = new Entity[10];
     public Entity[] monster = new Entity[E_MagicalNumber.MAX_MONSTER_ON_MAP.Value()];

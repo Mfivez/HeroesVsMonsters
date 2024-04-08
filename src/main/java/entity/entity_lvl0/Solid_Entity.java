@@ -3,7 +3,7 @@ package entity.entity_lvl0;
 import entity.Entity;
 import enums.E_ActualSprite;
 import main.GamePanel;
-import main.Particle_Constructor;
+import particle.Particle_Constructor;
 
 import java.awt.*;
 

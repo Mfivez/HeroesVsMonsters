@@ -1,8 +1,9 @@
-package main;
+package event;
 
 import enums.E_Direction;
 import enums.E_GameState;
 import enums.E_Sound;
+import main.GamePanel;
 
 public class EventHandler {
 
@@ -71,11 +72,11 @@ public class EventHandler {
         return hit;
     }
 
-    public void teleport(E_GameState gameState) {
+    public void teleport(E_GameState gameState, int tileX, int tileY ) {
         gp.gameState = gameState;
         gp.ui.DialogueState().setCurrentDialogue("Teleport!");
-        gp.player.worldX = gp.tileSize*37;
-        gp.player.worldY = gp.tileSize*10;
+        gp.player.worldX = gp.tileSize*tileX;
+        gp.player.worldY = gp.tileSize*tileY;
     }
 
     public void damagePit(int col, int row, E_GameState gameState) {
@@ -96,7 +97,6 @@ public class EventHandler {
             gp.ui.DialogueState().setCurrentDialogue("incr comment je me heal");
             gp.player.life = gp.player.maxLife;
             gp.player.mana = gp.player.maxMana;
-            gp.aSetter.setMonster(); // Fais réapparaitre les monstres quand je me soigne
         }
     }
 }

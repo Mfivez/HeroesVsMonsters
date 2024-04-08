@@ -329,14 +329,9 @@ public class Player extends Aggressive_Entity {
 
             //Check Monster collision with the updated worldX/Y & solidArea
             int monsterIndex = gp.cChecker.aliveEntity().check(this, gp.monster);
-            System.out.println(monsterIndex);
             damageMonster(monsterIndex, attack);
 
             int iTileIndex = gp.cChecker.aliveEntity().check(this, gp.iTile);
-            System.out.println("itile " +
-                    "" +
-                    "" +
-                    "" + iTileIndex);
             damageInteractiveTile(iTileIndex);
 
             //After checking collision, restore the original data

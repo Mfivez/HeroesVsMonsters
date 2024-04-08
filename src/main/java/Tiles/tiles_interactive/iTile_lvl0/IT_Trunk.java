@@ -1,7 +1,7 @@
-package tiles_interactive.iTile_lvl0;
+package Tiles.tiles_interactive.iTile_lvl0;
 
 import main.GamePanel;
-import tiles_interactive.InteractiveTile;
+import Tiles.tiles_interactive.InteractiveTile;
 
 public class IT_Trunk extends InteractiveTile {
     public IT_Trunk(GamePanel gp, int col, int row) {

@@ -12,8 +12,6 @@ import java.awt.*;
 public class Obj_Fireball extends Projectile {
     public Obj_Fireball(GamePanel gp) {
         super(gp);
-
-        name = "Fireball";
         speed = 5;
         maxLife = 80;
         life = maxLife;

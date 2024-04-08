@@ -1,4 +1,4 @@
-package tiles_interactive;
+package Tiles.tiles_interactive;
 
 import entity.Entity;
 import entity.entity_lvl2.Alive_Entity;

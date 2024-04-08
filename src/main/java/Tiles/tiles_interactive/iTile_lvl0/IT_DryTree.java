@@ -1,12 +1,12 @@
-package tiles_interactive.iTile_lvl0;
+package Tiles.tiles_interactive.iTile_lvl0;
 
 import Player.Player;
+import Tiles.tiles_interactive.InteractiveTile;
 import entity.Entity;
 import main.GamePanel;
 import enums.E_EntityType;
 import enums.E_RGB_COLOR;
 import enums.E_Sound;
-import tiles_interactive.InteractiveTile;
 
 import java.awt.*;
 

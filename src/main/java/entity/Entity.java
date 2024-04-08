@@ -9,7 +9,7 @@ import entity.entity_lvl3.Aggressive_Entity;
 import entity.entity_tool.eTool_SpriteSetter;
 import enums.*;
 import main.GamePanel;
-import main.Particle_Constructor;
+import particle.Particle_Constructor;
 import projectile.Projectile;
 
 import java.awt.*;
